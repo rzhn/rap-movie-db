@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Movie DB massages</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>000</MSGNR>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Person &amp;1 doesn&apos;t exists.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Date cannot be in the future.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>You are not authorized to perform this activity</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Duration &amp;1 invalid.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Movie name cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMOVIE_MSG_SR</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Firstname or lastname empty</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

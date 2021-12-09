@@ -1,0 +1,16 @@
+projection;
+use draft;
+
+define behavior for ZC_MOVIE_SR alias Movie
+//use etag
+{
+   use create;
+   use update;
+   use delete;
+
+
+
+   use action rateMovie;
+   use action setWatched;
+   use action reset;
+ }

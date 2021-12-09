@@ -1,0 +1,46 @@
+managed;
+with draft;
+
+define behavior for ZI_PERSON_SR alias Person
+implementation in class zbp_i_person_sr unique
+persistent table ZDB_PERSON
+draft table ZDB_D_PERSON
+lock master total etag Last_changed_at
+//authorization master (instance)
+etag master Last_changed_at
+
+{
+
+    update;
+    delete;
+    create;
+
+
+    field ( numbering : managed, readonly ) PersonId;
+    field ( readonly  ) Last_changed_at, Last_changed_by, Created_at, Created_by;
+    field ( mandatory ) Firstname, Lastname;
+
+    validation validateNames on save { field Firstname; create; }
+    validation validateLastnames on save { field  Lastname; create; }
+    validation validateDate  on save { field Birthday; create; }
+
+      draft determine action Prepare  {
+    validation validateNames;
+    validation validateLastnames;
+    validation validateDate;
+  }
+
+    mapping for ZDB_PERSON
+  {
+    PersonId            = person_id;
+    Firstname           = firstname;
+    Lastname            = lastname;
+    Birthday            = birthday;
+    Nationality         = nationality;
+    Created_by          = created_by;
+    Created_at          = created_at;
+    Last_changed_by     = last_changed_by;
+    Last_changed_at     = last_changed_at;
+  }
+
+}

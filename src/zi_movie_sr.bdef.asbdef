@@ -1,0 +1,66 @@
+managed; //
+with draft;
+
+define behavior for ZI_MOVIE_SR alias Movie
+implementation in class zbp_i_movie_sr unique
+persistent table ZDB_MOVIE
+draft table ZDB_D_MOVIE
+lock master total etag Last_changed_at
+//authorization master (instance)
+etag master Last_changed_at
+{
+  create;
+  update;
+  delete;
+  //association _Persondb { create; with draft; }
+
+
+  field ( numbering : managed, readonly ) MovieId;
+  field ( readonly  ) Last_changed_at, Last_changed_by, Created_at, Created_by;
+  field ( mandatory ) MovieName, PersonId;
+
+  action ( features : instance ) rateMovie result [1] $self;
+  action ( features : instance ) setWatched result [1] $self;
+  action ( features : instance ) reset result [1] $self;
+
+
+  validation validateDates on save { field ReleaseYear; create; }
+  validation validateMandatoryFields on save { field MovieName, PersonId; }
+  validation validatePerson   on save { field PersonId; create; }
+
+    draft determine action Prepare
+    {
+        validation validateDates;
+        validation validateMandatoryFields;
+        validation validatePerson;
+  }
+
+  determination CalculateMovieKey on modify { create; }
+//  validation validatePerson   on save { field PersonId; create; }action
+//  validation validateDuration on save { field Duration; create; }
+
+  mapping for ZDB_MOVIE
+  {
+    MovieId          = movie_id;
+    PersonId         = person_id;
+    Category         = category;
+    Rating           = rating;
+    MovieName        = movie_name;
+    ReleaseYear      = release_year;
+    Genre            = genre;
+    Rated            = rated;
+    Duration         = duration;
+    Avatar           = avatar;
+    Watched          = watched ;
+    CustomRate       = custom_rate;
+    Created_by       = created_by;
+    Created_at       = created_at;
+    Last_changed_by  = last_changed_by;
+    Last_changed_at  = last_changed_at;
+
+
+  }
+}
+
+/*
+*/

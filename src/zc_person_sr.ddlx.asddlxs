@@ -1,0 +1,49 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Person',
+                typeNamePlural: 'Persons',
+                title: { type: #STANDARD, value: 'PersonId' } } }
+                
+annotate view ZC_PERSON_SR
+    with 
+{
+@UI.facet: [ { id:            'Person',
+                 purpose:       #STANDARD,
+                 type:          #IDENTIFICATION_REFERENCE,
+                 label:         'Director',
+                 position:      10 } ]
+
+
+  @UI: { lineItem:       [ { position: 20 } ],
+         identification: [ { position: 20, label: 'Firstname'  } ] }
+  Firstname;
+
+  @UI: { lineItem:       [ { position: 30 } ],
+         identification: [ { position: 30, label: 'Lastname' } ] }
+  Lastname;
+
+  @UI: { lineItem:       [ { position: 40 } ],
+         identification: [ { position: 40, label: 'Birthday' } ] }
+  Birthday;
+
+  @UI: { lineItem:       [ { position: 50 } ],
+         identification: [ { position: 50, label: 'Nationality' } ] }
+  Nationality;
+  
+   @UI: {  lineItem:       [ { position: 60 } ],
+          identification: [ { position: 60, label: 'DirectorId'  } ] }
+  PersonId;
+
+
+  @UI.hidden: true
+  created_by;
+  
+  @UI.hidden: true
+  created_at;
+  
+  @UI.hidden: true
+  last_changed_by;
+  
+  @UI.hidden: true
+  last_changed_at;
+}

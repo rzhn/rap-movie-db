@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serv Definition for Movie DB'
+define service ZUI_MOVIE_SR {
+  expose ZC_MOVIE_SR as Movie;
+  expose ZC_PERSON_SR as Person;
+}

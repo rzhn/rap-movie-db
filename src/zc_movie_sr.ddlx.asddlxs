@@ -1,0 +1,128 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Movie',
+                imageUrl: 'Avatar',
+                typeNamePlural: 'Movies',
+                title: { type: #STANDARD, label: 'Movie', value: 'MovieName' } 
+                }
+              }
+  
+annotate view ZC_MOVIE_SR
+    with 
+{
+  @UI.facet: [ { id:               'MovieId',
+                 purpose:          #STANDARD,
+                 type:            #COLLECTION,
+                 label:           'Movie Information',
+                 position:          10 },
+                 { id:            'Moviedata',
+                 purpose:         #STANDARD,
+                 type:            #FIELDGROUP_REFERENCE,
+                 label:           'Technical data',
+                 parentId:        'MovieId',
+                 targetQualifier: 'tqmovie'},
+                 { id:            'Details',
+                 purpose:         #STANDARD,
+                 type:            #FIELDGROUP_REFERENCE,
+                 label:           'Details',
+                 parentId:        'MovieId',
+                 targetQualifier: 'tqdetail'},
+                 { id:            'Director',
+                 purpose:         #STANDARD,
+                 type:            #FIELDGROUP_REFERENCE,
+                 label:           'Director',
+                 parentId:        'MovieId',
+                 targetQualifier: 'tqdirector'},
+                 { id:            'Person',
+                 purpose:         #STANDARD,
+                 type:            #LINEITEM_REFERENCE,
+                 label:           'Person',
+                 position:        20,
+                 targetElement:   '_Persondb'},
+                 {id:'idHeader',
+                 type:  #DATAPOINT_REFERENCE,
+                 position: 2,
+                 label: 'Header',
+                 purpose: #HEADER,
+                 targetQualifier: 'CustomRate'
+               }]
+                
+
+                 
+                 
+  @UI: { identification: [ { position: 20, label: 'MovieId'  } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqmovie',label: 'MovieId' }]
+  MovieId;
+
+
+  @UI: { lineItem:       [ { position: 30, label: 'Movie Name' } ],
+         identification: [ { position: 30, label: 'Movie Name' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqmovie', label: 'Movie Name' }]
+  MovieName;
+  
+
+  @UI: { lineItem:       [ { position: 40, label: 'Release Year' } ],
+         identification: [ { position: 40, label: 'Release Year' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqdetail' ,label: 'Release Year'  }]
+  ReleaseYear;
+  
+  @UI: { lineItem:       [ { position: 50, label: 'Rating' },
+                           { type: #FOR_ACTION, dataAction: 'rateMovie', label: 'Rate Movie' } ],
+         identification: [ { position: 0, label: 'Rating' },
+                           { type: #FOR_ACTION, dataAction: 'rateMovie', label: 'Rate Movie' } ]}
+
+ @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Rating' }]   
+
+  Rating;
+
+  
+  @UI: { lineItem:       [ { position: 70, label: 'Genre' } ],
+         identification: [ { position: 70, label: 'Genre' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Genre' }]
+  Genre;
+
+  @UI: { lineItem:       [ { position: 80, label: 'Rated' } ],
+         identification: [ { position: 80, label: 'Rated' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Rated' }]
+  Rated;
+
+  @UI: { lineItem:       [ { position: 90, label: 'Duration' } ],
+         identification: [ { position: 90, label: 'Duration' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Duration' }]    
+  Duration;
+  
+  @UI: { lineItem:       [ { position: 100, label: 'Watched' },
+                            { type: #FOR_ACTION, dataAction: 'setWatched', label: 'Watched' },
+                            { type: #FOR_ACTION, dataAction: 'reset', label: 'Reset' }],
+         identification: [ { position: 100, label: 'Watched' },
+                            { type: #FOR_ACTION, dataAction: 'setWatched', label: 'Watched' },
+                            { type: #FOR_ACTION, dataAction: 'reset', label: 'Reset' } ] }
+  @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Watched' }]    
+  Watched;
+
+  @UI: { lineItem:       [ { position: 110, label: 'PersonId' } ],
+         identification: [ { position: 110, label: 'PersonId' } ] }
+ @UI.fieldGroup: [{ qualifier: 'tqdirector', label: 'Director' }] 
+  PersonId;
+  
+ @UI: { lineItem:       [ { position: 120, type: #AS_DATAPOINT, label: 'Custom Rating' } ],
+         identification: [ { position: 120, label: 'Custom Rating' } ],
+         dataPoint: { title: 'Custom Rating', visualization: #RATING, targetValue: 5 } }
+@UI.fieldGroup: [{ qualifier: 'tqcustomrating', label: 'Header' }] 
+  CustomRate;
+  
+  
+  
+           
+  @UI.hidden: true
+  created_by;
+  
+  @UI.hidden: true
+  created_at;
+  
+  @UI.hidden: true
+  last_changed_by;
+  
+  @UI.hidden: true
+  last_changed_at;
+}
