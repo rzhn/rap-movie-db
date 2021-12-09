@@ -2,6 +2,7 @@
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Data definition for person'
 @Metadata.ignorePropagatedAnnotations: true
+@ObjectModel.resultSet.sizeCategory: #XS
 @ObjectModel.usageType:{
     serviceQuality: #X,
     sizeCategory: #S,

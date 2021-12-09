@@ -10,6 +10,9 @@ CLASS lhc_Person DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS validateNames FOR VALIDATE ON SAVE
       IMPORTING keys FOR Person~validateNames.
 
+    METHODS get_instance_features FOR INSTANCE FEATURES
+      IMPORTING keys REQUEST requested_features FOR Person RESULT result.
+
 ENDCLASS.
 
 CLASS lhc_Person IMPLEMENTATION.
@@ -73,6 +76,9 @@ CLASS lhc_Person IMPLEMENTATION.
                     ) TO reported-person.
       ENDIF.
       ENDLOOP.
+  ENDMETHOD.
+
+  METHOD get_instance_features.
   ENDMETHOD.
 
 ENDCLASS.

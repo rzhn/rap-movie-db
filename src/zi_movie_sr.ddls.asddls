@@ -11,7 +11,7 @@
 define root view entity ZI_MOVIE_SR 
 as select from zdb_movie as MovieDB 
     
-association [1..*] to ZI_PERSON_SR as _Persondb on $projection.PersonId = _Persondb.PersonId
+association [0..1] to ZI_PERSON_SR as _Persondb on $projection.PersonId = _Persondb.PersonId
     
 {
     key movie_id as MovieId,

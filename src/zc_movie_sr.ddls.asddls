@@ -9,6 +9,7 @@ as projection on ZI_MOVIE_SR as MovieDB {
     @Search.defaultSearchElement: true
     key MovieId,
     @Search.defaultSearchElement: true
+    @Consumption.valueHelpDefinition: [{ entity:{name: 'zc_person_sr', element: 'PersonId' } }]
     PersonId,
     @Search.defaultSearchElement: true
     Category,

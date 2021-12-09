@@ -35,8 +35,8 @@ annotate view ZC_MOVIE_SR
                  targetQualifier: 'tqdirector'},
                  { id:            'Person',
                  purpose:         #STANDARD,
-                 type:            #LINEITEM_REFERENCE,
-                 label:           'Person',
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Director',
                  position:        20,
                  targetElement:   '_Persondb'},
                  {id:'idHeader',
@@ -44,8 +44,9 @@ annotate view ZC_MOVIE_SR
                  position: 2,
                  label: 'Header',
                  purpose: #HEADER,
-                 targetQualifier: 'CustomRate'
-               }]
+                 targetQualifier: 'Rating'
+                 }
+               ]
                 
 
                  
@@ -66,50 +67,52 @@ annotate view ZC_MOVIE_SR
   @UI.fieldGroup: [{ qualifier: 'tqdetail' ,label: 'Release Year'  }]
   ReleaseYear;
   
-  @UI: { lineItem:       [ { position: 50, label: 'Rating' },
-                           { type: #FOR_ACTION, dataAction: 'rateMovie', label: 'Rate Movie' } ],
-         identification: [ { position: 0, label: 'Rating' },
-                           { type: #FOR_ACTION, dataAction: 'rateMovie', label: 'Rate Movie' } ]}
-
- @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Rating' }]   
-
+ @UI: { lineItem:       [ { position: 50, type: #AS_DATAPOINT, label: 'Rating' } ],
+         identification: [ { position: 50, label: 'Rating' } ],
+         dataPoint: { title: 'Rating', visualization: #RATING, targetValue: 10 } }
+//@UI.fieldGroup: [{ qualifier: 'tqrating', label: 'Header' }] 
   Rating;
 
   
-  @UI: { lineItem:       [ { position: 70, label: 'Genre' } ],
-         identification: [ { position: 70, label: 'Genre' } ] }
+  @UI: { lineItem:       [ { position: 60, label: 'Genre' } ],
+         identification: [ { position: 60, label: 'Genre' } ] }
   @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Genre' }]
   Genre;
 
-  @UI: { lineItem:       [ { position: 80, label: 'Rated' } ],
-         identification: [ { position: 80, label: 'Rated' } ] }
+  @UI: { lineItem:       [ { position: 70, label: 'Rated' } ],
+         identification: [ { position: 70, label: 'Rated' } ] }
   @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Rated' }]
   Rated;
 
-  @UI: { lineItem:       [ { position: 90, label: 'Duration' } ],
-         identification: [ { position: 90, label: 'Duration' } ] }
+  @UI: { lineItem:       [ { position: 80, label: 'Duration' } ],
+         identification: [ { position: 80, label: 'Duration' } ] }
   @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Duration' }]    
   Duration;
   
-  @UI: { lineItem:       [ { position: 100, label: 'Watched' },
+  @UI: { lineItem:       [ { position: 90, label: 'Watched' },
                             { type: #FOR_ACTION, dataAction: 'setWatched', label: 'Watched' },
                             { type: #FOR_ACTION, dataAction: 'reset', label: 'Reset' }],
-         identification: [ { position: 100, label: 'Watched' },
+         identification: [ { position: 90, label: 'Watched' },
                             { type: #FOR_ACTION, dataAction: 'setWatched', label: 'Watched' },
                             { type: #FOR_ACTION, dataAction: 'reset', label: 'Reset' } ] }
   @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Watched' }]    
   Watched;
 
-  @UI: { lineItem:       [ { position: 110, label: 'PersonId' } ],
-         identification: [ { position: 110, label: 'PersonId' } ] }
+  @UI: { lineItem:       [ { position: 100, label: 'PersonId' } ],
+         identification: [ { position: 100, label: 'PersonId' } ] }
  @UI.fieldGroup: [{ qualifier: 'tqdirector', label: 'Director' }] 
   PersonId;
   
- @UI: { lineItem:       [ { position: 120, type: #AS_DATAPOINT, label: 'Custom Rating' } ],
-         identification: [ { position: 120, label: 'Custom Rating' } ],
-         dataPoint: { title: 'Custom Rating', visualization: #RATING, targetValue: 5 } }
-@UI.fieldGroup: [{ qualifier: 'tqcustomrating', label: 'Header' }] 
-  CustomRate;
+ @UI: { lineItem:       [ { position: 100, label: 'Avatar' } ],
+         identification: [ { position: 100, label: 'Avatar' } ] }
+ @UI.fieldGroup: [{ qualifier: 'tqdetail', label: 'Avatar' }] 
+  Avatar;
+  
+//@UI: { lineItem:       [ { position: 110, type: #AS_DATAPOINT, label: 'Custom Rating' } ],
+//         identification: [ { position: 110, label: 'Custom Rating' } ],
+//         dataPoint: { title: 'Custom Rating', visualization: #RATING, targetValue: 5 } }
+//@UI.fieldGroup: [{ qualifier: 'tqcustomrating', label: 'Header' }] 
+//  CustomRate;
   
   
   
